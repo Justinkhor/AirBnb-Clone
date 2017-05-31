@@ -31,7 +31,18 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'clearance'
+gem 'figaro'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'bootstrap-sass'
+gem "font-awesome-rails"
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
+gem 'gmaps-autocomplete-rails'
+gem 'country_select'
+gem 'kaminari'
+gem 'carrierwave'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
