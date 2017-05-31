@@ -1,0 +1,46 @@
+<br><br><br>
+<div class="row">
+      <div class="col-sm-6 col-sm-offset-3 r-form-1-box wow fadeInUp">
+        <div class="r-form-1-top">
+          <div class="r-form-1-top-left">
+            <h1 id="signup2">Sign up now!</h1>
+          </div>
+          <div class="r-form-1-top-right">
+            <i class="fa fa-pencil"></i>
+          </div>
+        </div>
+        <div class="r-form-1-bottom">
+            <div class="form-group">
+              <%= form.label :name, class:"sr-only" %>
+              <%= form.text_field :name, type: 'name', placeholder:"Name...", class:"r-form-1-name form-control"%>
+            </div>
+            <div class="form-group">
+              <%= form.label :age, class:"sr-only" %>
+              <%= form.number_field :age, type: 'age', placeholder:"Age...", class:"r-form-1-age form-control"%>
+            </div>
+            <div class="form-group">
+              <%= form.label :country, class:"sr-only" %>
+              <%= form.text_field :country, type: 'country', placeholder:"Country...", class:"r-form-1-country form-control"%>
+            </div>
+            <div class="form-group">
+              <%= form.label :gender, class:"sr-only" %>
+              <%= form.text_field :gender, type: 'gender', placeholder:"Gender...", class:"r-form-1-gender form-control"%>
+            </div>
+            <div class="form-group">
+              <%= form.label :email, class:"sr-only" %>
+              <%= form.email_field :email, type: 'email', placeholder:"Email...", class:"r-form-1-email form-control"%>
+            </div>
+            <div class="form-group">
+              <%= form.label :password, class:"sr-only" %>
+              <%= form.password_field :password, placeholder:"Password...",class:"r-form-1-password form-control" %>
+            </div>
+            <br>
+            <div class="submit-field">
+              <%= button_tag "Sign up", type: "submit", class: "btn" %>
+              <%# form.submit "Login", class: "btn" %>
+            </div>
+            <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+        </div>
+      </div>
+    </div>
+<br><br><br>

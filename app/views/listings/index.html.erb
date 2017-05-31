@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Place type</th>
+      <th>Property type</th>
+      <th>Room number</th>
+      <th>Bed number</th>
+      <th>Guest number</th>
+      <th>Country</th>
+      <th>State</th>
+      <th>City</th>
+      <th>Zipcode</th>
+      <th>Address</th>
+      <th>Price per night</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings.each do |listing| %>
+      <tr>
+        <td><%= listing.user.name %></td>
+        <td><%= listing.place_type %></td>
+        <td><%= listing.property_type %></td>
+        <td><%= listing.room_number %></td>
+        <td><%= listing.bed_number %></td>
+        <td><%= listing.guest_number %></td>
+        <td><%= listing.country %></td>
+        <td><%= listing.state %></td>
+        <td><%= listing.city %></td>
+        <td><%= listing.zipcode %></td>
+        <td><%= listing.address %></td>
+        <td><%= listing.price_per_night %></td>
+        <td><%= listing.description %></td>
+        <td><%= link_to 'Show', listing %></td>
+        <% if signed_in? %>
+          <% if listing.user.id == current_user.id %>
+          <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+          <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Listing', new_listing_path %>
