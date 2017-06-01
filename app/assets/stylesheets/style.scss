@@ -322,13 +322,40 @@ a {
   margin-left: 5px;
 }
 
-
-.jumbotron {
-  background-color: white;
+#autocomplete2 {
+  height: 70px;
+  width: 500px;
+  font-size: 30px;
 }
 
+.jumbotron {
+  color: #FF5A5F;
+  background-image: url(https://static.pexels.com/photos/279607/pexels-photo-279607.jpeg);
+  background-size: cover;
+  padding-top: 270px;
+  padding-bottom: 230px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.jumbotron h1 {
+  font-size: 72px;
+  padding-bottom: 70px;
+}
+
+#uploadavatar {
+  display: inline-block;
+}
+#profilepic {
+  height: 40px;
+  width: 40px;
+}
+#navbar-pic {
+  padding-top: 6px;
+}
 /* Dropdown Button */
 .dropbtn {
+  background-color: white;
     padding: 15px;
     font-size: 15px;
     border: none;
@@ -362,8 +389,15 @@ a {
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #f1f1f1}
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #f9f9f9;
+}
 /***** Footer *****/
 
 footer {

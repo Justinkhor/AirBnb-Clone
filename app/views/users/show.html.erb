@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<br>
+<% if current_user.avatar.url != nil%>
+<%= image_tag(current_user.avatar.thumb.url, :class =>'img-circle') %>
+<% end %>
+<br><br>
 
 <p>
   <strong>User_id:</strong>
@@ -25,4 +29,4 @@
   <%= @user.email %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> 
+<%= link_to 'Edit', edit_user_path(@user) %>

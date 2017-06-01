@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530093340) do
+ActiveRecord::Schema.define(version: 20170601071129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20170530093340) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_images_on_listing_id", using: :btree
   end
 
   create_table "listings", force: :cascade do |t|
@@ -56,10 +64,12 @@ ActiveRecord::Schema.define(version: 20170530093340) do
     t.string   "country"
     t.string   "gender"
     t.integer  "role"
+    t.string   "avatar"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 
   add_foreign_key "authentications", "users"
+  add_foreign_key "images", "listings"
   add_foreign_key "listings", "users"
 end

@@ -3,6 +3,7 @@
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 r-form-1-box wow fadeInUp">
           <div class="r-form-1-bottom">
+            <p><%= form.file_field :avatar, id:"uploadavatar" %></p>
               <div class="form-group">
                 <%= form.label :name, class:"sr-only" %>
                 <%= form.text_field :name, type: 'name', placeholder:"Name...", class:"r-form-1-name form-control"%>
@@ -35,4 +36,4 @@
         </div>
       </div>
 <% end %>
-<%= link_to 'Show', @user %> 
+<%= link_to 'Show', @user %>
