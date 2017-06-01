@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listings</h1>
 
 <table>
@@ -39,12 +37,8 @@
         <td><%= listing.price_per_night %></td>
         <td><%= listing.description %></td>
         <td><%= link_to 'Show', listing %></td>
-        <% if signed_in? %>
-          <% if listing.user.id == current_user.id %>
-          <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-          <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        <% end %>
+        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -52,4 +46,5 @@
 
 <br>
 
-<%= link_to 'New Listing', new_listing_path %>
+<%= link_to 'New Listing', new_listing_path %> | 
+<%= link_to 'My Listings', my_listings_path %>

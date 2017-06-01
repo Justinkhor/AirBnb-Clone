@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'images/destroy'
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
-
+  resources :images, only: [:destroy]
   resources :users, controller: "users" do
     resource :password,
       controller: "clearance/passwords",
@@ -15,4 +17,5 @@ Rails.application.routes.draw do
   root "static#index"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   resources :listings
+  get "/my_listings" => "listings#mylisting"
 end

@@ -1,5 +1,5 @@
 <div class="container">
-<%= form_for(listing) do |f| %>
+<%= form_for(listing, :html => { multipart: true }) do |f| %>
   <% if listing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
@@ -72,7 +72,16 @@
     <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
+<br>
 
+<%= f.fields_for :image do |ff| %>
+    <div class="field" id='uploadavatar'>
+      <%= ff.label :image %><br>
+      <%= ff.file_field :image, multiple: true, name: "images[]" %>
+    </div>
+  <% end %>
+<br>
+<br>
   <div class="actions">
     <%= f.submit %>
   </div>

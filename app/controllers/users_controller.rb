@@ -1,5 +1,7 @@
 class UsersController < Clearance::UsersController
 before_action :set_user, only: [:show, :edit, :update, :destroy]
+before_action :require_login, only: [:show, :edit, :update, :destroy, :index]
+before_action :superadmin_only, only: [:index]
     def new
         @user = User.new  # = user_from_params
         # render template: "users/new"
@@ -23,6 +25,9 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
 
     def show
+      # unless current_user.superadmin
+        # redirect_to root_path
+      # end
     end
 
     def update
@@ -53,6 +58,11 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
 
     def user_params
-        params.require(:user).permit(:name, :age, :country, :gender, :email, :password)
+        params.require(:user).permit(:name, :age, :country, :gender, :email, :password, :avatar)
     end
+
+    def superadmin_only
+      redirect_to sign_in_path unless current_user.superadmin?
+    end
+
 end

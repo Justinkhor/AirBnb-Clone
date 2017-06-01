@@ -43,6 +43,8 @@ gem 'gmaps-autocomplete-rails'
 gem 'country_select'
 gem 'kaminari'
 gem 'carrierwave'
+gem "mini_magick"
+gem 'cloudinary'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
