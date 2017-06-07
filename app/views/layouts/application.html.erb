@@ -48,7 +48,7 @@
               <% else %>
                 <div class="dropdown">
                   <%= link_to user_path(current_user), id:"navbar-pic" do %>
-                    <%= image_tag(current_user.avatar.thumb.url, :class =>'img-circle', :id => 'profilepic') %> SuperAdmin: <%= current_user.name %>
+                    <%= image_tag(current_user.avatar.thumb.url, :class =>'img-circle', :id => 'profilepic') if current_user.avatar %> SuperAdmin: <%= current_user.name %>
                   <% end %>
                   <div id="myDropdown" class="dropdown-content">
                     <%= link_to 'View all Users', users_path %>
