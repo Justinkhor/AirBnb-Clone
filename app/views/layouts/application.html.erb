@@ -11,7 +11,7 @@
     <title>AirbnbClone</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1OJ2LVjPpwrxpiT1qQNEzrdo40juTQDk&libraries=places" type="text/javascript"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
@@ -19,7 +19,7 @@
 
   <body>
     <nav class="navbar navbar-inverse" role="navigation">
-  		<div class="container-fluid">
+  		<div class="container-fluid" id="navbar">
   			<div class="navbar-header">
   				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
   					<span class="sr-only">Toggle navigation</span>
@@ -80,7 +80,7 @@
   		</div>
   	</nav>
 
-<p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
     <%= yield %>
     <!-- Footer -->
     <footer>
@@ -93,13 +93,13 @@
                     <a class="scroll-link" href="#about-us">Learn More</a>
                   </p>
                 </div>
-          <div class="col-sm-4 footer-contact-info wow fadeInDown">
+          <div class="col-sm-5 footer-contact-info wow fadeInDown">
             <h3>Contact Info</h3>
                 <p><i class="fa fa-map-marker"></i>Location: Next Academy, Glomac Damansara, TTDI, Kuala Lumpur, Malaysia </p>
                 <p><i class="fa fa-phone"></i> Phone: 012-3456789</p>
                 <p><i class="fa fa-envelope"></i> Email: <a href="mailto:justin@next.com">justin@next.com</a></p>
                 </div>
-            <div class="col-sm-4 footer-social wow fadeInUp">
+            <div class="col-sm-3 footer-social wow fadeInUp">
                   <h3>We're Social</h3>
                   <p>
                     <a href="#"><i class="fa fa-facebook"></i></a>

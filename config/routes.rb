@@ -16,6 +16,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "static#index"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-  resources :listings
+  resources :listings do
+    resources :reservations, only: [:create]
+  end
+  resources :reservations, only: [:destroy] do
+    resources :braintree, only: [:new, :create]
+  end
+
   get "/my_listings" => "listings#mylisting"
+  get '/search', to: 'listings#search', as: 'search'
+
 end

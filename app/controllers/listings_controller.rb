@@ -1,7 +1,8 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :update, :edit, :destroy]
   before_action :require_login
   before_action :non_user_only, only: [:index]
+  before_action :authorize_check, only: [:update, :destroy, :edit]
 
   # GET /listings
   # GET /listings.json
@@ -9,13 +10,26 @@ class ListingsController < ApplicationController
       @listings = Listing.all
   end
 
+  def search
+    @listings = Listing.search(params[:term], fields: ["country", "state", "city", "zipcode", "address", "description"], misspellings: {below: 5})
+    if @listings.blank?
+      redirect_to root_path, flash:{danger: "no successful search result"}
+    else
+      render :search
+    end
+  end
+
   def mylisting
     @listings = current_user.listings
     render 'index'
   end
+
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @reservation = @listing.reservations.new
+    @errors = @reservation.errors.full_messages
+
   end
 
   # GET /listings/new
@@ -36,7 +50,6 @@ class ListingsController < ApplicationController
     respond_to do |format|
       if @listing.save
         if params[:images]
-          byebug
           params[:images].each do |image|
             @listing.images.create(image: image)
           end
@@ -86,6 +99,12 @@ class ListingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find(params[:id])
+    end
+
+    def authorize_check
+      unless @listing.user == current_user || current_user.moderator? || current_user.superadmin?
+        redirect_to root_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
