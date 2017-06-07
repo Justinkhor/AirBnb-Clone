@@ -1,36 +1,41 @@
 <div class="jumbotron">
-  <h1>Find A Place To Stay</h1><br>
+  <h1>Stay With Me</h1><br>
   <div class="container-fluid">
-      <form class="form-inline">
-        <div class ="form-group" id="searchTextField2">
-          <input id="autocomplete2" placeholder="Enter a place" type="text" class="form-control" />
+    <%= form_tag search_path, method:"get", :class=>"form-inline" do |f| %>
+      <div class ="form-group">
+        <div class='input-group date', id="searchTextField2">
+          <%= text_field_tag :term, params[:term], id:"autocomplete2", placeholder:"Enter a place", class:"form-control"%>
+            <button class="input-group-addon", type="submit", id="search">
+            <span class="glyphicon glyphicon-search"></span>
+            </button>
         </div>
-          <div class="form-group">
-              <div class='input-group date' id='datetimepicker1'>
-                  <input id="autocomplete2" type='text' class="form-control" placeholder="Check In" />
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-          </div>
-          <div class="form-group">
-              <div class='input-group date' id='datetimepicker2'>
-                  <input id="autocomplete2" type='text' class="form-control" placeholder="Check Out" />
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-          </div>
-      </form>
+      </div>
+        <div class="form-group">
+            <div class='input-group date', id='datetimepicker1'>
+              <%= text_field_tag :check_in, "", id:"autocomplete2", placeholder:"Check In", class:"form-control" %>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class='input-group date', id='datetimepicker2'>
+              <%= text_field_tag :check_out, "",id:"autocomplete2", placeholder:"Check Out", class:"form-control" %>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    <% end %>
 
     <script type="text/javascript">
-        $(function () {
+        $(document).ready(function () {
             $('#datetimepicker1').datetimepicker({
-                format: 'MMM DD'
+                format: 'MMM DD YYYY'
             });
             $('#datetimepicker2').datetimepicker({
                 useCurrent: false, //Important! See issue #1075
-                  format: 'MMM DD'
+                  format: 'MMM DD YYYY'
             });
             $("#datetimepicker1").on("dp.change", function (e) {
                 $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
@@ -51,5 +56,32 @@
   </div>
 </div>
 <br>
-<h2>Featured Homes</h2><br>
-<h2>Suggested Homes For You</h2><br>
+<h2>Featured Listings</h2><br>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <% @listings.each do |listing| %>
+    <div class="responsive">
+      <div class="gallery">
+        <%= link_to image_tag(listing.images.first.image.thumb.url), listing%>
+        <div class="desc">RM<%= listing.price_per_night %> <%= listing.description %> <%= listing.place_type %></div>
+      </div>
+    </div>
+   <% end %>
+  </div>
+</div>
+
+<!-- <h1>Who's That Pokémon?!</h1>
+<p>
+  Take a break and guess that Pokémon
+</p>
+<%= image_tag @pokemon_url, id: "pokemon" %>
+<br />
+<h1 id="pokemon_name"><%= @pokemon_name.upcase %>!</h1>
+<p>
+  Pokemon Number: <%= @pokemon_no %>
+</p>
+<p>
+  Pokemon Type: <%= @pokemon_type %>
+</p>
+<button id="show">Reveal!</button>
+<br> -->

@@ -1,0 +1,14 @@
+<h1>Search Results:</h1>
+<br>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <% @listings.each do |listing| %>
+    <div class="responsive">
+      <div class="gallery">
+        <%= link_to image_tag(listing.images.first.image.thumb.url), listing%>
+        <div class="desc">RM<%= listing.price_per_night %> <%= listing.description %> <%= listing.place_type %></div>
+      </div>
+    </div>
+   <% end %>
+  </div>
+</div>

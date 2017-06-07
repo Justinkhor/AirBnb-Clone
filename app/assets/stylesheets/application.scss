@@ -19,6 +19,7 @@
 @import "gmaps-auto-complete";
 @import "animate";
 @import "media-queries";
+@import "braintree";
 @import "style";
 
 
@@ -32,9 +33,6 @@
     color: #FF5A5F;
     opacity: 1;
   }
-}
-.navbar-inverse {
-  box-shadow: 0px 10px 2px -4px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-nav > li > .dropdown {

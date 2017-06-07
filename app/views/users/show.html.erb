@@ -30,3 +30,37 @@
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %>
+
+<br><br>
+<h3>Reservations:</h3>
+<br>
+<table>
+  <tr>
+    <th>Listing Name</th>
+    <th>Check In</th>
+    <th>Check Out</th>
+    <th>Number Of Guests</th>
+    <th>Total Price</th>
+    <th>Paid?</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @reservation.each do |reservation| %>
+<tr>
+  <td><%= link_to reservation.listing.description, reservation.listing %></td>
+  <td><%= reservation.check_in.strftime('%d %B %Y') %></td>
+  <td><%= reservation.check_out.strftime('%d %B %Y') %></td>
+  <td><%= reservation.num_of_guests %></td>
+  <td><%= reservation.total_price %></td>
+  <td><%= reservation.paid %></td>
+    <% if reservation.paid == false %>
+  <td><%= link_to "Make Payment", new_reservation_braintree_path(reservation) %></td>
+    <% else %>
+  <td></td>
+    <% end %>
+  <td><%= link_to "Cancel Reservation", reservation, method: :delete %></td>
+</tr>
+<% end %>
+</table>
+
+<br>
