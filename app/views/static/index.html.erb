@@ -62,7 +62,7 @@
     <% @listings.each do |listing| %>
     <div class="responsive">
       <div class="gallery">
-        <%= link_to image_tag(listing.images.first.image.thumb.url) if current_listing.images.thumb.url, listing%>
+        <%= link_to image_tag(listing.images.first.image.thumb.url), listing if current_listing.images.thumb.url%>
         <div class="desc">RM<%= listing.price_per_night %> <%= listing.description %> <%= listing.place_type %></div>
       </div>
     </div>
