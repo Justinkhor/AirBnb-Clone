@@ -7,11 +7,11 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-      @listings = Listing.all
+      @listings = Listing.all.paginate(:page => params[:page]).per_page(20)
   end
 
   def search
-    @listings = Listing.search(params[:term], fields: ["country", "state", "city", "zipcode", "address", "description"], misspellings: {below: 5})
+    @listings = Listing.search(params[:term], fields: ["country", "state", "city", "zipcode", "address", "description"], misspellings: {below: 5}).paginate(:page => params[:page]).per_page(20)
     if @listings.blank?
       redirect_to root_path, flash:{danger: "no successful search result"}
     else

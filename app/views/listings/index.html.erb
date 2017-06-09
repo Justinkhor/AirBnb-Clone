@@ -46,5 +46,7 @@
 
 <br>
 
-<%= link_to 'New Listing', new_listing_path %> | 
+<%= link_to 'New Listing', new_listing_path %> |
 <%= link_to 'My Listings', my_listings_path %>
+<br>
+<%= will_paginate @listing %>

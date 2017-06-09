@@ -3,11 +3,11 @@ class StaticController < ApplicationController
     # unless signed_in?
     #   redirect_to sign_in_path
     # end
-    @listings = Listing.all
+    @listings = Listing.all.paginate(:page => params[:page]).per_page(20)
     get_pokemon_url
   end
   def get_pokemon_url
-    response = RestClient.get("http://pokeapi.co/api/v2/pokemon/#{rand(1..811)}/")
+    response = RestClient.get("http://pokeapi.co/api/v2/pokemon/#{rand(1..201)}/")
     result = JSON.parse(response.body)
 
     @pokemon_url = result["sprites"]["front_default"]
