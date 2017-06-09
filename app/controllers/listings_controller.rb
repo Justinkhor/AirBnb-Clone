@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-      @listings = Listing.all.paginate(:page => params[:page]).per_page(20)
+    @listings = Listing.all.order('created_at DESC').paginate(:page => params[:page]).per_page(20)
   end
 
   def search
