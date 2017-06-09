@@ -51,6 +51,7 @@ gem 'rest-client'
 gem 'sidekiq'
 gem 'searchkick'
 gem 'rails_12factor', group: :production
+gem 'will_paginate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
