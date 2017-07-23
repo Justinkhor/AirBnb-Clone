@@ -6,6 +6,6 @@ class ImagesController < ApplicationController
       format.html { redirect_to :back, notice: 'Image has been deleted' }
       format.json { head :no_content }
       format.js   { render layout: false}
-  end
+    end
   end
 end

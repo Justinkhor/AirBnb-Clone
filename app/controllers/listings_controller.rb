@@ -27,8 +27,8 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
-    @reservation = @listing.reservations.new
-    @errors = @reservation.errors.full_messages
+    # @reservation = @listing.reservations.new
+    # @errors = @reservation.errors.full_messages
 
   end
 
